@@ -3,7 +3,6 @@ import random
 import threading
 import math
 import struct
-import time
 
 def generate_music():
     # function to generate random sine wave
@@ -20,7 +19,6 @@ def generate_music():
 
     return b''.join(data)
 
-
 def send_music(multicast_socket, multicast_group, playback_state):
     try:
         while True:
@@ -34,10 +32,6 @@ def send_music(multicast_socket, multicast_group, playback_state):
             music_chunks = [music[i:i+chunk_size] for i in range(0, len(music), chunk_size)]
             for chunk in music_chunks:
                 multicast_socket.sendto(chunk, multicast_group)
-            if playback_state.get('send_pause'):
-                timestamp = struct.pack('<d', playback_state['pause_time'])
-                multicast_socket.sendto(b'PAUSE' + timestamp, multicast_group)
-                playback_state['send_pause'] = False
     finally:
         multicast_socket.close()
 
@@ -47,11 +41,8 @@ def handle_commands(playback_state):
         command = input('Enter command (PAUSE/PLAY): ')
         if command == 'PAUSE':
             playback_state['paused'] = True
-            playback_state['pause_time'] = time.time()
-            playback_state['send_pause'] = True
         elif command == 'PLAY':
             playback_state['paused'] = False
-
 
 def start_multicast_server(ip, port):
     # create a socket object

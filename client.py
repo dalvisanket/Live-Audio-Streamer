@@ -1,7 +1,6 @@
 import socket
 import struct
 import pyaudio
-import time
 
 def start_client(ip, port):
     # create a multicast socket
@@ -19,19 +18,9 @@ def start_client(ip, port):
     p = pyaudio.PyAudio()
     stream = p.open(format=p.get_format_from_width(2), channels=1, rate=44100, output=True)
 
-    paused = False
-
     while True:
-        data = client_socket.recv(65507)
-        if data.startswith(b'PAUSE'):
-            paused = True
-            pause_time = struct.unpack('<d', data[5:])[0]
-            latency = time.time() - pause_time
-            print(f'Paused at {pause_time}, latency: {latency:.5f} seconds')
-        elif data == b'PLAY':
-            paused = False
-        elif not paused:
-            stream.write(data)
+        music = client_socket.recv(65507)
+        stream.write(music)
 
 if __name__ == '__main__':
     start_client('224.0.0.1', 9999)
