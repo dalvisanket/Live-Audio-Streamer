@@ -9,6 +9,7 @@ def start_client(ip, port):
     # configure multicast settings
     multicast_group = (ip, port)
     client_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    client_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
     client_socket.bind(('', port))
     group = socket.inet_aton(ip)
     mreq = struct.pack('4sL', group, socket.INADDR_ANY)
@@ -20,6 +21,7 @@ def start_client(ip, port):
 
     while True:
         music = client_socket.recv(65507)
+        print(music) # print music data to terminal
         stream.write(music)
 
 if __name__ == '__main__':

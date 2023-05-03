@@ -8,7 +8,7 @@ def generate_music():
     # function to generate random sine wave
     frequency = random.randint(100, 1000) # random frequency between 100 and 1000 Hz
     sample_rate = 44100
-    duration = 0.5
+    duration = 0.1 # reduce duration to decrease size of data
     num_samples = int(sample_rate * duration)
 
     # generate sine wave
