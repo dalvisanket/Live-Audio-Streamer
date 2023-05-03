@@ -21,11 +21,19 @@ def start_client(ip, port):
     p = pyaudio.PyAudio()
     stream = p.open(format=p.get_format_from_width(2), channels=1, rate=44100, output=True)
 
+    prev_latency = None  # variable to keep track of previous latency value
+
     while True:
         data = client_socket.recv(65507)
-        timestamp, music = struct.unpack('<d', data[:8])[0], data[
-                                                             8:]  # extract timestamp and music data from received data
+        timestamp, music = struct.unpack('<d', data[:8])[0], data[8:]  # extract timestamp and music data from received data
         latency = time.time() - timestamp  # calculate latency as difference between current time and timestamp
+
+        if prev_latency is not None:
+            jitter = abs(latency - prev_latency)  # calculate jitter as absolute difference between current and previous latency values
+            print(f'Jitter: {jitter:.6f} seconds')  # print jitter to terminal
+
+        prev_latency = latency  # update previous latency value
+
         print(f'Latency: {latency:.6f} seconds')  # print latency to terminal
         stream.write(music)
 
