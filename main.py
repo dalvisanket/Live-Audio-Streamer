@@ -3,6 +3,8 @@ import random
 import threading
 import math
 import struct
+import time
+
 
 def generate_music():
     # function to generate random sine wave
@@ -27,7 +29,9 @@ def send_music(multicast_socket, multicast_group, playback_state):
                 continue
 
             music = generate_music()
-            multicast_socket.sendto(music, multicast_group)
+            timestamp = time.time()  # get current time
+            data = struct.pack('<d', timestamp) + music  # prepend timestamp to music data
+            multicast_socket.sendto(data, multicast_group)
     finally:
         multicast_socket.close()
 

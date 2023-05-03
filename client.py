@@ -1,5 +1,7 @@
 import socket
 import struct
+import time
+
 import pyaudio
 
 def start_client(ip, port):
@@ -20,8 +22,11 @@ def start_client(ip, port):
     stream = p.open(format=p.get_format_from_width(2), channels=1, rate=44100, output=True)
 
     while True:
-        music = client_socket.recv(65507)
-        print(music) # print music data to terminal
+        data = client_socket.recv(65507)
+        timestamp, music = struct.unpack('<d', data[:8])[0], data[
+                                                             8:]  # extract timestamp and music data from received data
+        latency = time.time() - timestamp  # calculate latency as difference between current time and timestamp
+        print(f'Latency: {latency:.6f} seconds')  # print latency to terminal
         stream.write(music)
 
 if __name__ == '__main__':
