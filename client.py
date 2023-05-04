@@ -18,9 +18,15 @@ def start_client(ip, port):
     p = pyaudio.PyAudio()
     stream = p.open(format=p.get_format_from_width(2), channels=1, rate=44100, output=True)
 
+    print("Client started and joined multicast group")
+
     while True:
-        music = client_socket.recv(65507)
-        stream.write(music)
+        try:
+            music = client_socket.recv(65507)
+            stream.write(music)
+            print("Received and playing music data")
+        except Exception as e:
+            print(f"Error occurred: {e}")
 
 if __name__ == '__main__':
-    start_client('224.0.0.1', 9999)
+    start_client('224.0.0.2', 9999)

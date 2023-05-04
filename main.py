@@ -28,6 +28,9 @@ def send_music(multicast_socket, multicast_group, playback_state):
 
             music = generate_music()
             multicast_socket.sendto(music, multicast_group)
+
+    except Exception as e:
+        print(f"Error occurred: {e}")
     finally:
         multicast_socket.close()
 
@@ -55,8 +58,10 @@ def start_multicast_server(ip, port):
     command_thread = threading.Thread(target=handle_commands, args=(playback_state,))
     command_thread.start()
 
+    print("Server started")
+
     # start sending music
     send_music(multicast_socket, multicast_group, playback_state)
 
 if __name__ == '__main__':
-    start_multicast_server('224.0.0.1', 9999)
+    start_multicast_server('224.0.0.2', 9999)
