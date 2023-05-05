@@ -1,4 +1,6 @@
 # Live-Audio-Streamer
+Concurrent Audio streamer to multiple clients using socket programming.
+
 ## About Project
 This project is developed as a part of our Design of Internet Services course under the guidance of Prof. Srinivas Narayana.
 
@@ -6,7 +8,8 @@ The objective of this project is to design and implement an audio streaming syst
 
 ## Basic setup requirements
 - Python 3.x
-- PyAudio
+- PyAudio <br>
+To install the required dependency, run the following command: ```pip install pyaudio```
 
 ## Usage
 To run the server, navigate to the directory containing the main server script (main.py) and run the following command:
