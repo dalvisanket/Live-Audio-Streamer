@@ -58,5 +58,5 @@ def start_multicast_server(ip, port):
 
     send_music(multicast_socket, multicast_group, playback_state)
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     start_multicast_server('224.0.0.2', 9999)
