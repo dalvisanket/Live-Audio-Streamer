@@ -55,7 +55,7 @@ In order the test the throughput of the application, the files we are concerned 
 ### Latency
 <img width="400" alt="Latency graph" src="https://user-images.githubusercontent.com/48671736/236635594-46556260-1236-4590-a238-9b85d4b27704.png">
 
-The recorded data indicates that the system performs well overall, with low latency and jitter values for most measurements. However, there is a sudden increase in both latency and jitter for all three clients towards the end of the measurements, possibly due to temporary network congestion or packet loss.
+The recorded data indicates that the system performs well overall, with low latency and jitter values for most measurements.
 
 ### Jitter 
 <img width="800" alt="Jitter graph" src="https://user-images.githubusercontent.com/48671736/236635338-39a4c721-84c1-4e1d-aa9c-9dcc3b782455.jpeg">
