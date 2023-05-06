@@ -49,3 +49,30 @@ In order the test the throughput of the application, the files we are concerned 
 1. First run the server file with ```python server.py``` on cmd. 
 2. Open a new cmd window and run ```throughput_test.bat``` using  the command ```throughput_test.bat```.
 3. This will run the ```throughput_client.py``` file and measure the throughput for 20 seconds for each connected client and print on cmd.
+
+## Results Overview
+
+### Latency
+<img width="400" alt="Latency graph" src="https://user-images.githubusercontent.com/48671736/236635594-46556260-1236-4590-a238-9b85d4b27704.png">
+
+The recorded data indicates that the system performs well overall, with low latency and jitter values for most measurements. However, there is a sudden increase in both latency and jitter for all three clients towards the end of the measurements, possibly due to temporary network congestion or packet loss.
+
+### Jitter 
+<img width="800" alt="Jitter graph" src="https://user-images.githubusercontent.com/48671736/236635338-39a4c721-84c1-4e1d-aa9c-9dcc3b782455.jpeg">
+
+Low jitter values indicate stable network conditions and consistent delivery of audio data, while an increase in jitter values suggests the presence of network congestion or other factors contributing to increased variability in latency.
+
+### Throughput
+<img width="400" alt="Throughput graph" src="https://user-images.githubusercontent.com/48671736/236635535-c076f3cc-069f-45cc-b5e4-6648288c86f8.jpeg">
+
+The code measures the throughput of music data received from a server over a duration of 20 seconds by creating a socket object, configuring multicast settings, and calculating the average number of bytes received per second. The graph provided shows that the server can handle up to 20 clients without any significant decrease in performance, but as more clients are added beyond this point, the server’s ability to transmit data efficiently begins to decline.
+
+### References
+
+https://docs.github.com/en <br>
+https://app.diagrams.net/ <br>
+https://www.atatus.com/blog/jitter-vs-latency/ <br>
+https://www.geeksforgeeks.org/socket-programming-python/ <br>
+https://pymotw.com/2/socket/multicast.html <br>
+https://www.geeksforgeeks.org/differences-between-tcp-and-udp/ <br>
+https://www.baeldung.com/cs/bandwidth-packet-loss-latency-jitter <br>
