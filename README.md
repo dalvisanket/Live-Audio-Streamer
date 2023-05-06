@@ -67,6 +67,16 @@ Low jitter values indicate stable network conditions and consistent delivery of 
 
 The code measures the throughput of music data received from a server over a duration of 20 seconds by creating a socket object, configuring multicast settings, and calculating the average number of bytes received per second. The graph provided shows that the server can handle up to 20 clients without any significant decrease in performance, but as more clients are added beyond this point, the server’s ability to transmit data efficiently begins to decline.
 
+## Demo screenshots
+
+<img width="1000" alt="ss1_audio_streamer" src="https://user-images.githubusercontent.com/48671736/236636802-9b545cfa-1d07-426b-b3e7-8e16ea4fe117.jpeg">
+
+Screenshot 1
+
+
+<img width="1000" alt="ss2_audio_streamer" src="https://user-images.githubusercontent.com/48671736/236636850-df03b833-f144-4a2b-a019-431439a73999.jpeg">
+
+Screenshot 2
 ### References
 
 https://docs.github.com/en <br>
