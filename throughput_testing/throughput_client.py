@@ -3,11 +3,7 @@ import socket
 import struct
 
 def measure_throughput(server_ip, server_port, duration):
-    # create a socket object
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
-    # configure multicast settings
-    multicast_group = (server_ip, server_port)
     client_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     client_socket.bind(('', server_port))
     group = socket.inet_aton(server_ip)
