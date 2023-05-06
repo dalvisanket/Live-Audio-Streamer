@@ -8,8 +8,9 @@ The objective of this project is to design and implement an audio streaming syst
 
 ## Contributors
 
-Sanket Dalvi (sd1482) : https://github.com/dalvisanket <br>
-Swapnil Verlekar (sv725) : https://github.com/swapnilverlekar <br>
+Sanket Dalvi (sd1482) [GitHub](https://github.com/dalvisanket) [LinkedIn](https://www.linkedin.com/in/-sanketdalvi-/)
+<br>
+Swapnil Verlekar (sv725) [GitHub](https://github.com/swapnilverlekar) [LinkedIn](https://www.linkedin.com/in/swapnilverlekar/) <br>
 
 ## Basic setup requirements
 - Python 3.x
