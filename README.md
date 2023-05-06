@@ -79,7 +79,6 @@ Same setup as the above one but with multiple clients connected to the server an
 
 
 
-Screenshot 2
 ### References
 
 https://docs.github.com/en <br>
